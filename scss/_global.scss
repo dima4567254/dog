@@ -1,0 +1,130 @@
+html {
+    font-size: 62.5%;
+
+    @media (max-width: 1200px) {
+        font-size: 50%;
+    }
+
+    @media (max-width: 768px) {
+        font-size: 40%;
+    }
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Roboto';
+    font-size: 16px;
+    line-height: 1.5; //24
+    color: $default;
+    font-weight: 400;
+    font-family: Roboto;
+    // @extend %dmsans-700px;
+    // letter-spacing: 0.6px;
+    // display: flex;
+    // flex-direction: column;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/*
+.title {
+    @extend %title;
+}*/
+
+.main {
+    flex-grow: 1;
+}
+
+.container {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.title {
+    // font-size: 36px;
+    // text-align: center;
+    // letter-spacing: 0.04em;
+    // text-transform: uppercase;
+    // color: $black3;
+    color: #170C04;
+    font-family: Poppins;
+}
+
+.section {
+    @include adaptiveValue("padding-top", 100, 45);
+    @include adaptiveValue("padding-bottom", 100, 45);
+}
+
+@function max($numbers...) {
+    @return m#{a}x(#{$numbers});
+}
+
+@function min($numbers...) {
+    @return m#{i}n(#{$numbers});
+}
+
+.button {
+    display: flex;
+    @include adaptiveValue("gap", 50, 20);
+    align-items: center;
+
+    &__btn {
+        background-color: #E27B3A;
+        border: none;
+        color: $white;
+        padding: 1.2rem 3rem;
+        border-radius: 24px;
+        transition: opacity 0.5s;
+
+        &:focus {
+            color: $focus;
+        }
+
+        &:hover {
+            opacity: 0.7;
+        }
+
+        &:active {
+            color: $active;
+        }
+    }
+
+    &__link {
+        padding: 1.2rem 3rem;
+        color: #E27B3A;
+        border-radius: 24px;
+        border: 1px solid rgba(226, 123, 58, 0.15);
+        transition: background-color 0.5s,
+            color 0.5s;
+
+        &:focus {
+            color: $focus;
+        }
+
+        &:hover {
+            background-color: #E27B3A;
+            color: $white;
+        }
+
+        &:active {
+            color: $active;
+        }
+    }
+}
+
+// footer__link--indent
