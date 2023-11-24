@@ -2,19 +2,25 @@
 sans-serif;*/
 
 $active: #fb0909;
+$red: #fb0909;
 $focus:#14B4BE;
 $hover:#2E96FF;
 // $hover:#fcd7b6;
 
 
 $ac: #fcd7b6;
-
 $white: #FFFFFF;
 $black: #170C04;
 $title: #436372;
 $btn-menu:silver;
 $default: #000000;
+$orange: #E27B3A;
 
+$padding-main:15rem;
+// $padding-1200:60px;
+// $padding-992:50px; //70
+// $padding-768:40px; //50
+// $padding-576:30px;
 /*$ac: #fcd7b6;
 
 /*accent*/
@@ -27,15 +33,11 @@ $default: #000000;
 // $Crayola: #c2d2db;
 // $red: #e72828;
 // $red1 :#fe3e57;
-$orange: #E27B3A;
+
 
 
 //section
-$padding-main:15rem;
-$padding-1200:60px;
-$padding-992:50px; //70
-$padding-768:40px; //50
-$padding-576:30px;
+
 
 // @mixin line-clamp-box($line-clamp, ) {
 //     display: -webkit-box;
@@ -83,7 +85,7 @@ $padding-576:30px;
 //     -webkit-line-clamp: $line-clamp;
 //     -webkit-box-orient: vertical;
 //     overflow: hidden;
-    
+
 // }
 
 // @mixin line-height($font-size, $line-height, ) {
