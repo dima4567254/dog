@@ -2,12 +2,20 @@ html {
     font-size: 62.5%;
 
     @media (max-width: 1200px) {
-        font-size: 50%;
-    }
-
-    @media (max-width: 768px) {
         font-size: 40%;
     }
+
+    // @media (max-width: 992px) {
+    //     font-size: 40%;
+    // }
+
+    @media (max-width: 768px) {
+        font-size: 30%;
+    }
+
+    // @media (max-width: 576px) {
+    //     font-size: 45%;
+    // }
 }
 
 html,
@@ -17,7 +25,7 @@ body {
 
 body {
     font-family: 'Roboto';
-    font-size: 16px;
+    font-size: rem(16);
     line-height: 1.5; //24
     color: $default;
     font-weight: 400;
@@ -79,6 +87,7 @@ body {
 }
 
 .button {
+    //это кнопки общие
     display: flex;
     @include adaptiveValue("gap", 50, 20);
     align-items: center;
@@ -87,7 +96,7 @@ body {
         background-color: #E27B3A;
         border: none;
         color: $white;
-        padding: 1.2rem 3rem;
+        padding: rem(12) rem(30);
         border-radius: 24px;
         transition: opacity 0.5s;
 
@@ -105,10 +114,10 @@ body {
     }
 
     &__link {
-        padding: 1.2rem 3rem;
+        padding: rem(12) rem(30);
         color: #E27B3A;
         border-radius: 24px;
-        border: 1px solid rgba(226, 123, 58, 0.15);
+        border: 1px solid rgba(226, 123, 58);
         transition: background-color 0.5s,
             color 0.5s;
 
@@ -126,5 +135,32 @@ body {
         }
     }
 }
+
+.button {
+    //это для меню
+    border: none;
+    background-color: transparent;
+    transition: color 0.5s;
+
+    &:focus {
+        color: $focus;
+    }
+
+    &:hover {
+
+        text,
+        path {
+            fill: $hover;
+        }
+    }
+
+    &:active {
+        color: $active;
+    }
+}
+
+// .logo {
+
+// }
 
 // footer__link--indent

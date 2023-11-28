@@ -18,7 +18,7 @@
 // populyr лишние отступы
 
 .header {
-    padding: 3rem 0;
+    padding: rem(30) 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -30,31 +30,130 @@
 
 .menu {
 
-    grid-template-columns: 8% 82% 10%;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    grid-gap: 3.5rem;
+    // grid-template-columns: 8% 82% 10%;
+    // grid-template-columns: repeat(3, 1fr);
+    // display: grid;
+    // justify-items: center;
+    // align-items: center;
+    display: flex;
+    justify-content: space-between;
+    // grid-gap: rem(35);
+    @include adaptiveValue("grid-gap", 35, 20);
+    // justify-content: space-between;
+    // justify-items: stretch;
 
-    &__btn {
-        // display: none;
-        width: 2.3rem;
-        height: 1.6rem;
-    }
+    // .menu__inner {
+    //     margin: 0 auto;
+    // }
+
+    // .menu__btn {
+    //     order1
+    // }
+
+    // &__items {}
+
+    // &__item {}/
+
+    // &__nav {
+    //     margin-left: auto;
+    //     /*написано 2 раза и в стилях и тут items*/
+    // }
 
     &__logo {
-        width: 8.5rem;
-        height: 4rem;
-        object-fit: cover;
+        line-height: 0;
+    }
+
+    &__btn {
+        display: none;
+        // position: relative;
+
+        @media (max-width: 992px) {
+            order: 1;
+            border: none;
+            // margin-left: rem(40);
+            width: 23px;
+            height: 16px;
+            position: relative;
+            display: flex; //!!!
+            justify-content: space-between;
+            align-items: center;
+            background-color: transparent;
+            padding: 0;
+            z-index: 10;
+
+            &.active span {
+                transform: scale(0);
+            }
+
+            &.active:before {
+                transform: rotate(45deg);
+                top: 9px;
+            }
+
+            &.active::after {
+                transform: rotate(-45deg);
+                // bottom: rem(9);
+                bottom: 4px;
+                // bottom: rem(2);
+            }
+
+            span,
+            &::before,
+            &::after {
+                transition: all 0.5s;
+                position: absolute;
+                content: '';
+                height: 3px;
+                width: 100%;
+                background-color: $black;
+            }
+
+            &::before {
+                top: 0;
+            }
+
+            &::after {
+                bottom: 0;
+            }
+        }
+    }
+
+
+    &__logo {
+        width: 85px;
+        height: 40px;
+        object-fit: contain;
     }
 
     &__items {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        // width: 100%;
         @include adaptiveValue("gap", 55, 20);
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
+
+        // display: grid;
+        // grid-template-columns: repeat(4, 1fr);
+        @media (max-width: 992px) {
+            transform: translateY(-200%);
+            position: absolute;
+            top: 0;
+            width: 100%;
+            left: 0;
+            flex-direction: column;
+            z-index: 5;
+            background-color: #edf1f4;
+            transition: transform 1s;
+            padding: rem(100) 0 rem(100);
+
+            &.active {
+                transform: translateY(0%);
+            }
+        }
     }
 
     &__item {
+        text-align: center;
         transition: color 0.5s;
 
         &:focus {
@@ -70,6 +169,10 @@
         }
     }
 
+    &__link {
+        display: block;
+    }
+
     &__nav {
         // display: grid;
         display: flex; //!!!!
@@ -77,80 +180,20 @@
         align-items: center;
         @include adaptiveValue("gap", 40, 20);
     }
-
-    &__button {}
-
-    &__btn {
-        width: 2.3rem;
-        height: 1.6rem;
-        position: relative;
-
-        span,
-        &::before,
-        &::after {
-            transition: all .5s;
-            position: absolute;
-            content: '';
-            height: .3rem;
-            width: 100%;
-            background-color: $default;
-        }
-
-        &::before,
-        &::after {
-            position: absolute;
-            content: '';
-        }
-
-        span {
-            top: 6px;
-        }
-
-        &::before {
-            top: 0;
-        }
-
-        &::after {
-            bottom: 0;
-        }
-    }
 }
-
-
-.button {
-    border: none;
-    background-color: transparent;
-    transition: color 0.5s;
-
-    &:focus {
-        color: $focus;
-    }
-
-    &:hover {
-
-        text,
-        path {
-            fill: $hover;
-
-        }
-    }
-
-    &:active {
-        color: $active;
-    }
-}
-
 
 .intro {
     position: relative;
+    display: flex;
+    align-items: center;
 
     &::before {
         content: "";
         position: absolute;
         top: 0;
         right: 0;
-        width: 82.5rem;
-        height: 69.3rem;
+        width: rem(950);
+        height: 100vh;
         background-image: url('../images/icons/rectangle-big.svg');
         background-repeat: no-repeat;
         background-position: center;
@@ -159,95 +202,166 @@
     }
 
     &__wrapper {
-        height: 75vh;
+        height: 100vh;
         display: flex; //!!!
         align-items: center;
         justify-items: center;
+
         // grid-template-columns: repeat(2, 1fr);
+        @media (max-width: 1200px) {
+            // align-items: center;
+            flex-direction: column-reverse;
+            // height: 100vh;
+            justify-content: center;
+        }
     }
 
-    &__box {}
+    &__box {
+        @media (max-width: 1200px) {
+            max-width: 100%;
+            // margin: 0 auto;
+        }
+
+    }
 
     &__title {
-        font-size: 100px;
+        font-size: rem(100);
         font-weight: 700;
         line-height: 1.2;
-        margin-bottom: 12rem;
+        // margin-bottom: rem(120);
+        @include adaptiveValue("margin-bottom", 120, 20);
+
+        @media (max-width: 576px) {
+            font-size: 9rem;
+        }
     }
 
     &__img {
-        width: 65rem;
-        height: 51rem;
-        object-fit: cover;
+        width: rem(650);
+        // height: rem(580);
+        height: rem(510);
+        object-fit: contain;
+
+        @media (max-width: 1200px) {
+            // margin: 0 auto;
+        }
     }
 }
 
-
+//скорей всего придется делать 2 разных блока!!!
 .quality {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    @include adaptiveValue("gap", 30, 20);
+    &__items {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
+        gap: 30px; //нужен
+
+        @media (max-width: 768px) {
+            gap: 40px;
+        }
+    }
 
     &__item {
-        max-width: 36rem;
         text-align: center;
         border-radius: 8px;
         background-color: $white;
+        position: relative;
+
+        &--bowl {
+            border: 1px solid rgba(0, 0, 0, 0.10);
+        }
+    }
+
+    &__images {
+        position: absolute;
+        top: rem(-26);
+        left: 50%;
+        transform: translateX(-50%);
+        clip-path: url(#mask4);
+        width: rem(63);
+        height: rem(54);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @media (max-width: 1200px) {
+            clip-path: inherit;
+        }
+
+        &--bowl {
+            background-color: rgb(91%, 77%, 65%, .15);
+        }
+
+        &--bowl2 {
+            background-color: rgb(42%, 67%, 31%, .15);
+        }
+
+        &--bowl3 {
+            background-color: rgb(99%, 75%, 14%, .15);
+        }
     }
 
     &__img {
-        width: 35px;
-        height: 35px;
+        width: rem(35);
+        height: rem(35);
         object-fit: cover;
-        margin-bottom: 25px;
 
         &--dog1,
         &--dog2,
         &--dog3 {
             clip-path: url(#mask3);
             object-fit: cover;
+
+            @media (max-width: 1200px) {
+                clip-path: inherit;
+            }
+        }
+
+        &--dog3,
+        &--dog2,
+        &--dog1 {
+            width: rem(315);
+            height: rem(270);
+        }
+
+        &--dog2,
+        &--dog3 {
+            object-position: right;
         }
 
         &--dog1 {
-            width: 315px;
-            height: 272px;
-            object-position: 0 0;
+            object-position: left;
         }
 
-        &--dog2 {
-            width: 307px;
-            height: 264px;
-            object-position: -77px 0;
-        }
 
-        &--dog3 {
-            width: 307px;
-            height: 264px;
-            object-position: -142px 0;
-        }
+
+        // &--dog3 {
+        //     // width: rem(385);
+        //     // height: rem(265);
+        //     // object-position: -142px 0;
+        //     object-position: right;
+        // }
     }
 
     &__subtitle {
         color: $black;
         font-family: Poppins;
-        font-size: 25px;
-        max-width: 27rem;
-        margin: 0 auto 1rem;
+        font-size: rem(25);
+        max-width: rem(270);
+        margin: 0 auto rem(10);
     }
 
     &__text {
         color: $black;
-        max-width: 25rem;
-        margin: 0 auto 2.5rem;
+        max-width: rem(250);
+        margin: 0 auto rem(25);
     }
 
     &__subtext {
-        &--subscription {
-            color: $orange;
-        }
+        color: $orange;
     }
 
     &__link {
+
         transition: color 0.5s;
 
         &:focus {
@@ -263,16 +377,22 @@
         &:active {
             color: $active;
         }
+
+        &--bowl {
+            display: block;
+            padding: 40px 25px;
+        }
     }
 }
 
 .popular {
     &__title {
         text-align: center;
-        font-size: 32px;
+        font-size: 3.2rem;
         font-weight: 500;
         max-width: rem(300);
         margin: 0 auto rem(20);
+
     }
 
     &__text {
@@ -287,8 +407,10 @@
 
         &--details {
             color: $orange;
+            margin: 0 auto;
         }
     }
+
 
     &__wrapper {
         display: grid;
@@ -296,21 +418,45 @@
         @include adaptiveValue("grid-column-gap", 30, 20);
         margin-bottom: rem(65);
         grid-template-columns: repeat(12, 1fr);
+        // grid-template-columns: repeat(auto-fit, minmax(37rem, 1fr));
+
+        // grid-template-columns: repeat(auto-fit, minmax(12, 1fr));
+
+        // grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr)); //555
+
+        @media (max-width: 1200px) {
+            // grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+        }
+
+        @media (max-width: 992px) {
+            // grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+        }
+
+        @media (max-width: 576px) {
+            // grid-template-columns: repeat(1, 1fr);
+        }
     }
+
 
     &__article {
         cursor: pointer;
         text-align: center;
-        transition: opacity 0.5s;
+        transition: opacity .5s;
         grid-column-end: span 4;
-        // gap: 65px;
 
-        // &:not(:last-child) {
-        //     margin-bottom: rem(65);
+        // &--small {
+        // потос удалмить в html усли не нало
+        //     // display: grid;
+        //     grid-column-end: span 4;
         // }
+
+        @media (max-width: 576px) {
+            grid-column-end: span 6;
+        }
 
         &--big {
             grid-column-end: span 6;
+            // grid-row: span 6;
         }
 
         &:focus {
@@ -341,6 +487,12 @@
         object-fit: contain;
         width: rem(200);
         height: rem(200);
+
+        @media (max-width: 576px) {
+            // width: rem(300);
+            height: rem(300);
+            //не получилось по другому сделал картинки одинаковыми
+        }
     }
 
     &__box {
@@ -351,7 +503,7 @@
     &__subtitle {
         color: $black;
         font-family: Poppins;
-        font-size: 25px;
+        font-size: rem(25);
         font-weight: 500;
     }
 
@@ -380,23 +532,43 @@
         display: grid;
         grid-template-columns: repeat(2, 60% 40%);
         align-items: center;
-    }
+        justify-items: center;
+        gap: 20px; //иожет быть скролл
 
-    &__images {
-        display: flex;
+        // @media (max-width: 1200px) {
+        //     // grid-template-columns: repeat(2, 1fr);
+        // }
+
+        @media (max-width: 576px) {
+            display: block;
+            text-align: center;
+        }
     }
 
     &__img {
-        width: 670px;
-        height: 630px;
+        width: rem(670);
+        height: rem(630);
         object-fit: cover;
         object-position: -23px 57px;
         clip-path: url(#mask2);
+
+        @media (max-width: 1200px) {
+            clip-path: none;
+            object-position: inherit;
+        }
+
+        @media (max-width: 576px) {
+            margin-bottom: 20px;
+        }
     }
 
     &__box {
         max-width: rem(485);
         margin-left: auto;
+
+        @media (max-width: 576px) {
+            margin: 0 auto;
+        }
     }
 
     &__pretext {
@@ -409,7 +581,7 @@
     }
 
     &__title {
-        font-size: 32px;
+        font-size: rem(32);
         font-weight: 500;
         line-height: 1.4;
         margin-bottom: rem(20);
@@ -428,7 +600,7 @@
 .subscription {
     &__title {
         text-align: center;
-        font-size: 32px;
+        font-size: rem(32);
         font-weight: 500;
         line-height: 1.4;
         max-width: rem(400);
@@ -437,6 +609,16 @@
 
     &__items {
         @include adaptiveValue("margin-bottom", 50, 20);
+        // display: grid;
+
+        // justify-items: center;
+        // //  @include adaptiveValue("row-gap", 65, 20);
+        // @include adaptiveValue("grid-column-gap", 30, 20);
+        // //  margin-bottom: rem(65);
+        // grid-template-columns: repeat(4, 1fr);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
+        gap: 30px;
     }
 
     // возможно сделать отдельный бем блок!!!
@@ -446,7 +628,11 @@
         background-color: $orange;
         border: none;
         color: $white;
-        padding: 1.2rem 3rem;
+        // padding: 1.2rem 3rem;
+        padding-bottom: rem(12);
+        padding-top: rem(12);
+        padding-left: rem(30);
+        padding-right: rem(30);
         border-radius: 24px;
         transition: opacity 0.5s;
 
@@ -470,13 +656,17 @@
         // gap: 30px;
         @include adaptiveValue("gap", 30, 20);
         grid-template-columns: repeat(2, 1fr);
+
+        @media (max-width: 576px) {
+            // display: block;
+        }
     }
 
     &__left {}
 
     &__title {
         text-align: center;
-        font-size: 32px;
+        font-size: rem(32);
         font-weight: 500;
         line-height: 1.4;
         margin-bottom: rem(10);
@@ -495,10 +685,15 @@
     }
 
     &__item {
-        padding: 35px 25px;
+        padding-bottom: rem(35);
+        padding-top: rem(35);
+        padding-left: rem(25);
+        padding-right: rem(25);
         text-align: center;
         border-radius: 5px;
-        transition: opacity 0.5s;
+        transition: opacity .5s;
+        display: grid;
+        align-items: center;
         cursor: pointer;
 
         &:focus {
@@ -556,7 +751,7 @@
 .reviews {
     &__title {
         text-align: center;
-        font-size: 32px;
+        font-size: rem(32);
         font-weight: 500;
         line-height: 1.4;
         margin-bottom: rem(40);
@@ -627,7 +822,7 @@
 
     &__subtext {
         color: $black;
-        font-size: 12px;
+        font-size: rem(12);
         font-weight: 400;
         line-height: 2;
     }
@@ -636,7 +831,6 @@
 // звезды
 .jq-ry-container {
     margin: 0 auto rem(25);
-
 }
 
 // слайдер
@@ -651,10 +845,15 @@
 
 .slick-next {
     bottom: 4%;
+    transform: rotate(180deg);
+    //  translateY(0%)
+    // translateX(0%)
+    // translateZ(0%)
+
 }
 
 .slick-disabled {
-    opacity: 0.5;
+    opacity: .5;
 }
 
 // конец слайдера
@@ -681,7 +880,7 @@
     &__title {
         color: $white;
         font-family: Poppins;
-        font-size: 31px;
+        font-size: rem(31);
         font-weight: 500;
         line-height: 1.3;
         margin-bottom: rem(15);
@@ -691,9 +890,6 @@
         color: $white;
     }
 }
-
-
-
 
 .form {
     display: flex;
@@ -719,7 +915,7 @@
         @include adaptiveValue("padding-left", 37, 10);
         @include adaptiveValue("padding-right", 37, 10);
         color: $white;
-        font-size: 18px;
+        font-size: rem(18);
         font-weight: 500;
         line-height: 2.2;
         border-radius: 0 10px 10px 0;
@@ -744,17 +940,18 @@
 .footer {
     background-color: #140A03;
     color: $white; //сделать снипед
-    padding: 120px 0px 105px 0px;
+    padding-bottom: rem(105);
+    padding-top: rem(120);
     position: relative;
 
     &::before {
         content: "";
         position: absolute;
-        top: -60px;
+        top: rem(-60);
         left: 50%;
         transform: translateX(-50%);
-        height: 60px;
-        width: 730px;
+        height: rem(60);
+        width: rem(730);
         background-image: url('../images/icons/rectangle-small.svg');
         background-repeat: no-repeat;
         background-position: center;
@@ -769,7 +966,7 @@
         //  align-items: center;
         justify-items: center;
         @include adaptiveValue("gap", 130, 20);
-        height: 250px;
+        height: rem(280);
         // text-align: end;
         // display: flex;
         // justify-content: space-between;
@@ -779,27 +976,29 @@
 
     &__items {
         text-align: end;
-        align-self: end;
+        align-self: center;
     }
 
     &__item {
-        align-self: end;
+        // align-self: end;
 
-        // gap: 35px;
-        // display: grid;
+        &:not(:last-child) {
+            margin-bottom: rem(35);
+        }
+
         &--logo {
             align-self: Start;
         }
     }
 
-    &__link {
+    &__logo {
+        margin-bottom: rem(65);
         display: block;
-        margin-bottom: rem(35); //!!!
-        transition: color 0.5s;
+    }
 
-        &--mail {
-            display: inline;
-        }
+    &__link {
+        display: inline;
+        transition: color 0.5s;
 
         &:focus {
             color: $focus;
@@ -819,27 +1018,24 @@
     }
 
     &__img {
-        margin-bottom: rem(65);
+
         width: rem(180);
         height: rem(95);
     }
 }
 
-
-
-
 .social {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: rem(25);
 
     &__item {}
 
     &__link {
         background-color: #DFDFDF;
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        width: rem(40);
+        height: rem(40);
         display: block;
         display: flex;
         justify-content: center;
@@ -860,150 +1056,10 @@
     }
 }
 
-
-
-
-/*
-
-&__link {
-    color: $title;
-    font-family: $;
-    font-size: 15px;
-    line-height: 1;
-    font-weight: 700;
-    outline-color: #000000;
-    outline-offset: 5px;
-    transition: color 0.5s;
-    &:focus {
-        color: $green;
-    }
-
-    &:hover {
-        color: $ac;
-    }
-
-    &--active {
-        color: $ac;
-    }
-}
-
-*/
-
-/*.video {
-    height: 425px;
-    max-width: 1185px;
-    display: flex;
-    justify-content: center;
-    background-position: center;
-    position: relative;
-    opacity: 1;
-    transition: opacity 0.7s,
-        border 0.5s;
-    max-width: 100%;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-
-    &:focus {
-        outline: solid $ac;
-    }
-
-    &:hover {
-        opacity: 0.4;
-        border: 2px solid $black;
-    }
-
-    &:active {
-        color: $active;
-    }
-
-    &::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-image: url('../images/play.png');
-        background-position: center;
-        background-repeat: no-repeat;
-        height: 100px;
-        width: 100px;
-    }
-}*/
-// .div1 {
-//     width: 400px;
-//     height: 400px;
-//     position: relative;
-
-//     &::before {
-//         content: "";
-//         position: absolute;
-//         top: 0;
-//         right: 0;
-//         // height: 1px;
-//         // width: 1px;
-//         background-image: url('../images/dog1.jpg');
-//         background-repeat: no-repeat;
-//         background-position: center;
-//         background-size: cover;
-//         clip-path: url(#mask3);
-//         width: 315px;
-//         height: 272px;
-//     }
-// }
-
-
-// .images1 {
-//     clip-path: url(#mask3);
-//     width: 315px;
-//     height: 272px;
-//     object-fit: cover;
-//     object-position: 0px 0px;
-// }
-
-// .images2 {
-//     clip-path: url(#mask3);
-//     width: 307px;
-//     height: 264px;
-//     object-fit: cover;
-//     object-position: -77px 0px;
-// }
-
-// .images3 {
-//     clip-path: url(#mask3);
-//     width: 307px;
-//     height: 264px;
-//     object-fit: cover;
-//     object-position: -142px 0px;
-// }
-// -------------------------------
-// варианты картинки с доктором
-// .img {
-//     width: 670px;
-//     height: 630px;
-//     object-fit: cover;
-//     object-position: -23px 57px;
-//     clip-path: url(#mask2);
-// }
-
-// .img {
-//     // width: 670px;
-//     // height: 630px;
-//     width: 1000px;
-//     height: 647px;
-//     // object-fit: contain;
-//     // object-position: 0px 0px;
-//     // object-position: -23px 57px;
-//     clip-path: url(#mask2);
-// }
-
-// .img {
-//     // width: 670px;
-//     // height: 630px;
-//     width: 1000px;
-//     height: 647px;
-//     // object-fit: contain;
-//     // object-position: 0px 0px;
-//     // object-position: -23px 57px;
-//     clip-path: url(#mask2);
-// }
+// font-size: clamp(26px, 50% 32px);
+// font-size: min(26px, max(32px));
+// font-size: calc(32px + (16px * (100vw - 768px) / (100vw - 1280px)));
+// font-size: calc(32px - 6px * (100vw / 1280));
+// font-size: clamp(26px, 8vw, 32px);
+// font-size: clamp(26px, 1.5vw, 32px); //лутший вариант
+// @include adaptiveValue("font-size", 32, 26);

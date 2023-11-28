@@ -36,9 +36,21 @@ $('.trust__slider').slick({
     //     },
     // ],
     
-    nextArrow: '<button type="button"class="slick-next"><img class="next" src="images/icons/arrow_down.svg"></button>',
+    nextArrow: '<button type="button"class="slick-next"><img class="next" src="images/icons/arrow_top.svg"></button>',
     prevArrow: '<button type="button"class="slick-prev"><img class="prev" src="images/icons/arrow_top.svg"></button>',
 });
+
+$('.menu__btn').on('click', function () {
+    $('.menu__items, .menu__btn').toggleClass('active');
+
+    /*$('.header__logo').toggleClass('menu__list--active');
+    $('.intro__btn').toggleClass('menu__list--active');*/
+});
+
+// $('.menu__btn').on('click', function () {
+//     $('.menu__btn').toggleClass('active');
+
+// });
 /*	$(".menu a").on("click", function (event) {
         event.preventDefault();
         var id = $(this).attr('href'),
