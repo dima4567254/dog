@@ -749,6 +749,8 @@
 }
 
 .reviews {
+
+    //проблема с иконками на 320!!!
     &__title {
         text-align: center;
         font-size: rem(32);
@@ -860,6 +862,7 @@
 
 .prints {
     &__wrapper {
+        // max-width: rem(1140);
         // clip-path: polygon(0 6%, 100% 0%, 100% 70%, 0% 75%);
         clip-path: polygon(0 6%, 100% 0%, 100% 93%, 0 100%);
         background-color: #2E96FF;
@@ -873,6 +876,14 @@
         // gap: 100px;
         @include adaptiveValue("gap", 100, 20);
         align-items: center;
+
+        // @media (max-width: 1200px) {
+        //     margin: 0 auto;
+        // }
+
+        @media (max-width: 576px) {
+            display: block;
+        }
     }
 
     &__item {}
@@ -888,6 +899,10 @@
 
     &__text {
         color: $white;
+
+        @media (max-width: 576px) {
+            margin-bottom: rem(20);
+        }
     }
 }
 
@@ -904,6 +919,10 @@
 
         &::placeholder {
             color: $black;
+        }
+
+        @media (max-width: 576px) {
+            width: 100%;
         }
     }
 
@@ -956,6 +975,14 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+
+        @media (max-width: 1200px) {
+            top: rem(-50);
+        }
+
+        @media (max-width: 576px) {
+            width: 100%;
+        }
     }
 
 
@@ -967,11 +994,16 @@
         justify-items: center;
         @include adaptiveValue("gap", 130, 20);
         height: rem(280);
+
         // text-align: end;
         // display: flex;
         // justify-content: space-between;
         // align-self: center;
         // height: 190px;
+        @media (max-width: 576px) {
+            // display: block;
+            gap: rem(20);
+        }
     }
 
     &__items {
