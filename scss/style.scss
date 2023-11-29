@@ -15,7 +15,6 @@
 //  border: none;
 //  background-color: transparent;
 
-// populyr лишние отступы
 
 .header {
     padding: rem(30) 0;
@@ -174,14 +173,21 @@
     }
 
     &__nav {
-        // display: grid;
-        display: flex; //!!!!
-        justify-items: center;
-        align-items: center;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         @include adaptiveValue("gap", 40, 20);
     }
 }
 
+// --------------------!!!!
+.containers {
+    width: 500px;
+    height: 500px;
+    display: grid;
+    grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+}
+
+// ------------------------
 .intro {
     position: relative;
     display: flex;
@@ -203,16 +209,34 @@
 
     &__wrapper {
         height: 100vh;
-        display: flex; //!!!
+        // display: flex; //!!!
+        // align-items: center;
+        // justify-items: center;
+        // ----------2
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         align-items: center;
-        justify-items: center;
+        // ----------2
 
-        // grid-template-columns: repeat(2, 1fr);
         @media (max-width: 1200px) {
+            // flex-direction: column-reverse;
+            // justify-content: center;
+            // ----------2
+            grid-template-columns: inherit;
+            // grid-template-columns: repeat(3, 1fr);
             // align-items: center;
-            flex-direction: column-reverse;
-            // height: 100vh;
-            justify-content: center;
+            // justify-content: center;
+            place-content: center;
+            // align-content: center;
+
+            // --
+            // grid-template-rows: repeat(auto-fit, minmax(36rem, 1fr));
+                    // grid-template-rows: repeat(auto-fit, minmax(0, 1fr));
+                    // align-items: center;
+            // -----------2
+            // grid-auto-flow: dense;
+            // grid-template-areas: "intro__img intro__box";
+            // grid-template-areas: "b t";
         }
     }
 
@@ -220,15 +244,16 @@
         @media (max-width: 1200px) {
             max-width: 100%;
             // margin: 0 auto;
+            // ----2
+            grid-row-start: 2;
+            // ----
         }
-
     }
 
     &__title {
         font-size: rem(100);
         font-weight: 700;
         line-height: 1.2;
-        // margin-bottom: rem(120);
         @include adaptiveValue("margin-bottom", 120, 20);
 
         @media (max-width: 576px) {
@@ -236,14 +261,15 @@
         }
     }
 
+
     &__img {
         width: rem(650);
-        // height: rem(580);
         height: rem(510);
         object-fit: contain;
 
         @media (max-width: 1200px) {
-            // margin: 0 auto;
+            margin: 0 auto;
+            // grid-row-start: 1;
         }
     }
 }
@@ -331,15 +357,6 @@
         &--dog1 {
             object-position: left;
         }
-
-
-
-        // &--dog3 {
-        //     // width: rem(385);
-        //     // height: rem(265);
-        //     // object-position: -142px 0;
-        //     object-position: right;
-        // }
     }
 
     &__subtitle {
@@ -609,8 +626,6 @@
 
     &__items {
         @include adaptiveValue("margin-bottom", 50, 20);
-        // display: grid;
-
         // justify-items: center;
         // //  @include adaptiveValue("row-gap", 65, 20);
         // @include adaptiveValue("grid-column-gap", 30, 20);
@@ -628,7 +643,6 @@
         background-color: $orange;
         border: none;
         color: $white;
-        // padding: 1.2rem 3rem;
         padding-bottom: rem(12);
         padding-top: rem(12);
         padding-left: rem(30);
@@ -653,7 +667,6 @@
 .gallery {
     &__wrapper {
         display: grid;
-        // gap: 30px;
         @include adaptiveValue("gap", 30, 20);
         grid-template-columns: repeat(2, 1fr);
 
@@ -661,8 +674,6 @@
             // display: block;
         }
     }
-
-    &__left {}
 
     &__title {
         text-align: center;
@@ -710,27 +721,21 @@
 
         &--1 {
             background-color: rgb(56%, 4%, 3%, 0.1);
-            // background-color: #900A08;
-
         }
 
         &--2 {
-            // background-color: #243D7E;
             background-color: rgb(14%, 24%, 49%, 0.1);
         }
 
         &--3 {
-            // background-color: #800125;
             background-color: rgb(50%, 0%, 15%, 0.1);
         }
 
         &--4 {
-            // background-color: #C48CAE;
             background-color: rgb(77%, 55%, 68%, 0.1);
         }
 
         &--5 {
-            // background-color: #C4154B;
             background-color: rgb(77%, 8%, 29%, 0.1);
         }
     }
@@ -764,7 +769,6 @@
     &__slider {
         max-width: rem(555);
         margin: 0 auto;
-        // position: relative;
     }
 
     &__item {
@@ -799,8 +803,6 @@
             background-image: url('../images/icons/quotes-top.svg');
         }
     }
-
-    &__box {}
 
     &__img {
         width: rem(30);
@@ -848,10 +850,6 @@
 .slick-next {
     bottom: 4%;
     transform: rotate(180deg);
-    //  translateY(0%)
-    // translateX(0%)
-    // translateZ(0%)
-
 }
 
 .slick-disabled {
@@ -862,8 +860,6 @@
 
 .prints {
     &__wrapper {
-        // max-width: rem(1140);
-        // clip-path: polygon(0 6%, 100% 0%, 100% 70%, 0% 75%);
         clip-path: polygon(0 6%, 100% 0%, 100% 93%, 0 100%);
         background-color: #2E96FF;
         display: grid;
@@ -872,8 +868,6 @@
         @include adaptiveValue("padding-top", 100, 20);
         @include adaptiveValue("padding-left", 65, 10);
         @include adaptiveValue("padding-right", 65, 10);
-        // padding: 100px 65px;
-        // gap: 100px;
         @include adaptiveValue("gap", 100, 20);
         align-items: center;
 
@@ -985,23 +979,14 @@
         }
     }
 
-
     &__wrapper {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        //   display: grid;
-        //  align-items: center;
         justify-items: center;
         @include adaptiveValue("gap", 130, 20);
         height: rem(280);
 
-        // text-align: end;
-        // display: flex;
-        // justify-content: space-between;
-        // align-self: center;
-        // height: 190px;
         @media (max-width: 576px) {
-            // display: block;
             gap: rem(20);
         }
     }
@@ -1012,8 +997,6 @@
     }
 
     &__item {
-        // align-self: end;
-
         &:not(:last-child) {
             margin-bottom: rem(35);
         }
@@ -1050,7 +1033,6 @@
     }
 
     &__img {
-
         width: rem(180);
         height: rem(95);
     }
@@ -1060,8 +1042,6 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: rem(25);
-
-    &__item {}
 
     &__link {
         background-color: #DFDFDF;
