@@ -1,8 +1,10 @@
 
 $(".trust__star").rateYo({
     rating: 3,
-    starWidth: "11px",
+    starWidth: "15px",
     spacing: "7px",
+    ratedFill: "#E27B3A",
+    normalFill: "#E2E2E2"
 });
 
 $('.trust__slider').slick({
@@ -35,7 +37,7 @@ $('.trust__slider').slick({
     //         }
     //     },
     // ],
-    
+
     nextArrow: '<button type="button"class="slick-next"><img class="next" src="images/icons/arrow_top.svg"></button>',
     prevArrow: '<button type="button"class="slick-prev"><img class="prev" src="images/icons/arrow_top.svg"></button>',
 });
