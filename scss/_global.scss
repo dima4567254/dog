@@ -2,16 +2,19 @@ html {
     font-size: 62.5%;
 
     @media (max-width: 1200px) {
-        font-size: 40%;
+        font-size: 47%;
     }
+    // @media (max-width: 1200px) {
+    //     font-size: 40%;
+    // }
 
     // @media (max-width: 992px) {
     //     font-size: 40%;
     // }
 
-    @media (max-width: 768px) {
-        font-size: 30%;
-    }
+    // @media (max-width: 768px) {
+    //     font-size: 30%;
+    // }
 
     // @media (max-width: 576px) {
     //     font-size: 45%;

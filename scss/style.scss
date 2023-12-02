@@ -13,10 +13,8 @@
 
 // reviews проблема с иконками на 320!!!
 // наверное только делать по 2 формуле на 45% отсталось если не делать все идеально
-
-
-
-
+// сделать все снипеты что записал
+// прпробывать 3 способ верски + flex deraction
 .header {
     padding: rem(30) 0;
     position: fixed;
@@ -127,7 +125,7 @@
 
     &__item {
         text-align: center;
-        transition: color 0.5s;
+        transition: color .5s;
 
         @media (max-width: 992px) {
             width: 100%;
@@ -148,14 +146,6 @@
 
     &__link {
         display: block;
-
-        // &active {
-        //     color: red;
-        // }
-
-        // &--active {
-        //     color: red;
-        // }
     }
 
     &__nav {
@@ -219,8 +209,8 @@
         line-height: 1.2;
         @include adaptiveValue("margin-bottom", 120, 20);
 
-        @media (max-width: 576px) {
-            font-size: 9rem;
+        @media (max-width: 768px) {
+            font-size: 7rem;
         }
     }
 
@@ -362,22 +352,9 @@
         @include adaptiveValue("grid-column-gap", 30, 20);
         margin-bottom: rem(65);
         grid-template-columns: repeat(12, 1fr);
-        // grid-template-columns: repeat(auto-fit, minmax(37rem, 1fr));
-
-        // grid-template-columns: repeat(auto-fit, minmax(12, 1fr));
-
-        // grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr)); //555
-
-        // @media (max-width: 1200px) {
-        //     // grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-        // }
-
-        @media (max-width: 992px) {
-            // grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-        }
 
         @media (max-width: 576px) {
-            // grid-template-columns: repeat(1, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(3rem, 1fr));
         }
     }
 
@@ -388,19 +365,12 @@
         transition: opacity .5s;
         grid-column-end: span 4;
 
-        // &--small {
-        // потос удалмить в html усли не нало
-        //     // display: grid;
-        //     grid-column-end: span 4;
-        // }
-
         @media (max-width: 576px) {
             grid-column-end: span 6;
         }
 
         &--big {
             grid-column-end: span 6;
-            // grid-row: span 6;
         }
 
         &:focus {
@@ -433,9 +403,7 @@
         height: rem(200);
 
         @media (max-width: 576px) {
-            // width: rem(300);
-            height: rem(300);
-            //не получилось по другому сделал картинки одинаковыми
+            height: rem(300); //не получилось по другому сделал картинки одинаковыми
         }
     }
 
@@ -482,9 +450,9 @@
         justify-items: center;
         gap: 20px; //иожет быть скролл
 
-        // @media (max-width: 1200px) {
-        //     // grid-template-columns: repeat(2, 1fr);
-        // }
+        @media (max-width: 1200px) {
+            grid-template-columns: repeat(2, 48% 48%);
+        }
 
         @media (max-width: 576px) {
             display: block;
@@ -501,7 +469,7 @@
 
         @media (max-width: 1200px) {
             clip-path: none;
-            object-position: inherit;
+            object-position: -110px 0;
         }
 
         @media (max-width: 576px) {
@@ -559,11 +527,6 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
         gap: 30px;
-
-        // @media (max-width: 768px) {
-        //     gap: 40px;
-        //     // проверить нужен ли тут
-        // }
     }
 
     &__item {
@@ -590,11 +553,6 @@
         &:active {
             color: $active;
         }
-
-        // &--bowl {
-        //     display: block;
-        //     padding: 40px 25px;
-        // }
     }
 
     &__img {
@@ -666,11 +624,7 @@
     &__wrapper {
         display: grid;
         @include adaptiveValue("gap", 30, 20);
-        grid-template-columns: repeat(2, 1fr);
-
-        // @media (max-width: 576px) {
-        //     // display: block;
-        // }
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     }
 
     &__title {
@@ -747,17 +701,18 @@
         height: rem(110);
         object-fit: cover;
 
+        @media (max-width: 768px) {
+            object-fit: contain;
+        }
+
         &--big {
             width: rem(465);
             height: rem(425);
-            object-fit: cover;
         }
     }
 }
 
 .reviews {
-
-    //проблема с иконками на 320!!!
     &__title {
         text-align: center;
         font-size: rem(32);
@@ -844,11 +799,28 @@
     bottom: 25%;
     right: -10%;
     line-height: 0;
+
+    @media (max-width: 576px) {
+        bottom: -20%;
+        right: inherit;
+    }
 }
 
 .slick-next {
     bottom: 4%;
     transform: rotate(180deg);
+
+    @media (max-width: 576px) {
+        right: 35%;
+        transform: rotate(90deg);
+    }
+}
+
+.slick-prev {
+    @media (max-width: 576px) {
+        right: 57%;
+        transform: rotate(-90deg);
+    }
 }
 
 .slick-disabled {
@@ -862,17 +834,14 @@
         clip-path: polygon(0 6%, 100% 0%, 100% 93%, 0 100%);
         background-color: #2E96FF;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+
         @include adaptiveValue("padding-bottom", 100, 20);
         @include adaptiveValue("padding-top", 100, 20);
-        @include adaptiveValue("padding-left", 65, 10);
-        @include adaptiveValue("padding-right", 65, 10);
-        @include adaptiveValue("gap", 100, 20);
+        @include adaptiveValue("padding-left", 65, 20);
+        @include adaptiveValue("padding-right", 65, 20);
+        @include adaptiveValue("gap", 100, 10);
         align-items: center;
-
-        // @media (max-width: 1200px) {
-        //     margin: 0 auto;
-        // }
 
         @media (max-width: 576px) {
             display: block;
@@ -914,7 +883,7 @@
             color: $black;
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
             width: 100%;
         }
     }
@@ -951,7 +920,6 @@
     padding-top: rem(120);
     position: relative;
 
-
     &::before {
         content: "";
         position: absolute;
@@ -976,10 +944,15 @@
 
     &__wrapper {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
         justify-items: center;
         @include adaptiveValue("gap", 130, 20);
         height: rem(280);
+
+        @media (max-width: 768px) {
+
+            height: 100%;
+        }
 
         @media (max-width: 576px) {
             gap: rem(40);
@@ -990,6 +963,10 @@
         text-align: end;
         align-self: center;
 
+        @media (max-width: 576px) {
+            width: 100%;
+            text-align: center;
+        }
     }
 
     &__item {
