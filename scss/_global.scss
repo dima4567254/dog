@@ -86,11 +86,12 @@ body {
     @return m#{i}n(#{$numbers});
 }
 
-.button {
+.box {
     //это кнопки общие
     display: flex;
     @include adaptiveValue("gap", 50, 20);
     align-items: center;
+        // для иконок карзины в хедере
 
     &__btn {
         background-color: #E27B3A;
@@ -128,6 +129,11 @@ body {
         &:hover {
             background-color: #E27B3A;
             color: $white;
+
+            text,
+            path {
+                fill: $hover;
+            }
         }
 
         &:active {
@@ -135,32 +141,3 @@ body {
         }
     }
 }
-
-.button {
-    //это для меню
-    border: none;
-    background-color: transparent;
-    transition: color 0.5s;
-
-    &:focus {
-        color: $focus;
-    }
-
-    &:hover {
-
-        text,
-        path {
-            fill: $hover;
-        }
-    }
-
-    &:active {
-        color: $active;
-    }
-}
-
-// .logo {
-
-// }
-
-// footer__link--indent
