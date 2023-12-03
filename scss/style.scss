@@ -13,8 +13,12 @@
 
 // reviews проблема с иконками на 320!!!
 // наверное только делать по 2 формуле на 45% отсталось если не делать все идеально
-// сделать все снипеты что записал
 // прпробывать 3 способ верски + flex deraction
+//прописать картинкам и возсможно кнопкам lh0!!!
+
+// наверное надо удалить весь адаптив и сделать заного и тогда и 45% тоже
+
+
 .header {
     padding: rem(30) 0;
     position: fixed;
@@ -127,9 +131,9 @@
         text-align: center;
         transition: color .5s;
 
-        @media (max-width: 992px) {
-            width: 100%;
-        }
+        // @media (max-width: 992px) {
+        //     width: 100%;
+        // }
 
         &:focus {
             color: $focus;
@@ -162,6 +166,24 @@
     &__button {
         border: none;
         background-color: transparent;
+        line-height: 0;
+        transition: color 0.5s;
+
+        &:focus {
+            color: $focus;
+        }
+
+        &:hover {
+
+            text,
+            path {
+                fill: $hover;
+            }
+        }
+
+        &:active {
+            color: $active;
+        }
     }
 }
 
@@ -190,15 +212,15 @@
         grid-template-columns: repeat(2, 1fr);
         align-items: center;
 
-        @media (max-width: 1200px) {
+        @media (max-width: 992px) {
             grid-template-columns: inherit;
             place-content: center;
         }
     }
 
     &__box {
-        @media (max-width: 1200px) {
-            max-width: 100%;
+        @media (max-width: 992px) {
+            // max-width: 100%;
             grid-row-start: 2;
         }
     }
@@ -212,6 +234,10 @@
         @media (max-width: 768px) {
             font-size: 7rem;
         }
+
+        @media (max-width: 576px) {
+            font-size: 4rem;
+        }
     }
 
 
@@ -220,7 +246,7 @@
         height: rem(510);
         object-fit: contain;
 
-        @media (max-width: 1200px) {
+        @media (max-width: 992px) {
             margin: 0 auto;
         }
     }
@@ -231,10 +257,6 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
         gap: 30px; //нужен
-
-        @media (max-width: 768px) {
-            gap: 40px;
-        }
     }
 
     &__item {
@@ -251,14 +273,16 @@
         left: 50%;
         transform: translateX(-50%);
         clip-path: url(#mask4);
-        width: rem(63);
-        height: rem(54);
+        width: 63px;
+        height: 54px;
         display: grid;
         justify-content: center; //возможно по другому через абсолют
         align-items: center;
 
         @media (max-width: 1200px) {
             clip-path: inherit;
+            width: rem(63); //для клип патх
+            height: rem(54);
         }
 
         &--bowl {
@@ -358,7 +382,6 @@
         }
     }
 
-
     &__article {
         cursor: pointer;
         text-align: center;
@@ -388,7 +411,11 @@
 
     &__images {
         background-color: #FCF2EB;
-        padding: rem(70) rem(90);
+        // padding: rem(70) rem(90);//!!
+        @include adaptiveValue("padding-bottom", 70, 20);
+        @include adaptiveValue("padding-top", 70, 20);
+        @include adaptiveValue("padding-left", 90, 10);
+        @include adaptiveValue("padding-right", 90, 10);
     }
 
     &__big {
@@ -402,9 +429,9 @@
         width: rem(200);
         height: rem(200);
 
-        @media (max-width: 576px) {
-            height: rem(300); //не получилось по другому сделал картинки одинаковыми
-        }
+        // @media (max-width: 576px) {
+        //     height: rem(300); //не получилось по другому сделал картинки одинаковыми
+        // }
     }
 
     &__box {
@@ -454,15 +481,15 @@
             grid-template-columns: repeat(2, 48% 48%);
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
             display: block;
             text-align: center;
         }
     }
 
     &__img {
-        width: rem(670);
-        height: rem(630);
+        width: 670px;
+        height: 630px;
         object-fit: cover;
         object-position: -23px 57px;
         clip-path: url(#mask2);
@@ -470,9 +497,11 @@
         @media (max-width: 1200px) {
             clip-path: none;
             object-position: -110px 0;
+            width: 67rem;//для клип патх
+            height: 63rem;
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
             margin-bottom: 20px;
         }
     }
@@ -481,7 +510,7 @@
         max-width: rem(485);
         margin-left: auto;
 
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
             margin: 0 auto;
         }
     }
@@ -624,7 +653,7 @@
     &__wrapper {
         display: grid;
         @include adaptiveValue("gap", 30, 20);
-        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(33rem, 1fr));
     }
 
     &__title {
@@ -843,12 +872,10 @@
         @include adaptiveValue("gap", 100, 10);
         align-items: center;
 
-        @media (max-width: 576px) {
-            display: block;
-        }
+        // @media (max-width: 576px) {
+        //     display: block;
+        // }
     }
-
-    &__item {}
 
     &__title {
         color: $white;
@@ -862,9 +889,9 @@
     &__text {
         color: $white;
 
-        @media (max-width: 576px) {
-            margin-bottom: rem(20);
-        }
+        // @media (max-width: 576px) {
+        //     margin-bottom: rem(20);
+        // }
     }
 }
 
@@ -944,19 +971,18 @@
 
     &__wrapper {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(29rem, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(22rem, 1fr));
         justify-items: center;
         @include adaptiveValue("gap", 130, 20);
         height: rem(280);
 
         @media (max-width: 768px) {
-
             height: 100%;
         }
 
-        @media (max-width: 576px) {
-            gap: rem(40);
-        }
+        // @media (max-width: 576px) {
+        //     gap: rem(40);
+        // }
     }
 
     &__items {

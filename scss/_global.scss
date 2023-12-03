@@ -1,25 +1,94 @@
+// html {
+//     font-size: 62.5%;
+
+//     @media (max-width: 1200px) {
+//         font-size: 47%;
+//     }
+//     // @media (max-width: 1200px) {
+//     //     font-size: 40%;
+//     // }
+
+//     // @media (max-width: 992px) {
+//     //     font-size: 40%;
+//     // }
+
+//     // @media (max-width: 768px) {
+//     //     font-size: 30%;
+//     // }
+
+//     // @media (max-width: 576px) {
+//     //     font-size: 45%;
+//     // }
+// }
+
+/*сетка*/
 html {
-    font-size: 62.5%;
-
-    @media (max-width: 1200px) {
-        font-size: 47%;
+    @media (max-width: 120em) {
+        font-size: 10px;
+        //1920px
     }
-    // @media (max-width: 1200px) {
-    //     font-size: 40%;
-    // }
+    @media (max-width: 108em) {
+        font-size: 9px;
+        //1728px
+    }
 
-    // @media (max-width: 992px) {
-    //     font-size: 40%;
-    // }
+    @media (max-width: 105em) {
+        font-size: 8.75px;
+    }
 
-    // @media (max-width: 768px) {
-    //     font-size: 30%;
-    // }
+    @media (max-width: 91.5em) {
+        font-size: 7.9px;
+    }
 
-    // @media (max-width: 576px) {
-    //     font-size: 45%;
-    // }
+    @media (max-width: 91em) {
+        font-size: 8.4px;
+    }
+
+    @media (max-width: 90em) {
+        font-size: 7.9px;
+    }
+
+    @media (max-width: 80em) {
+        font-size: 7.2px;
+    }
+
+    @media (max-width: 72em) {
+        font-size: 6.5px;
+    }
+
+    @media (max-width: 64em) {
+        font-size: 5.5px;
+    }
+
+    @media (max-width: 48em) {
+        font-size: 10px;
+    }
+
+    @media (max-width: 44em) {
+        font-size: 9px;
+    }
+
+    @media (max-width: 38em) {
+        font-size: 8px;
+    }
+
+    @media (max-width: 34em) {
+        font-size: 7px;
+    }
+
+    @media (max-width: 30em) {
+        font-size: 6px;
+    }
+
+    @media (max-width: 26em) {
+        font-size: 4.5px;
+    }
+
+    @media (max-width: 21em) {
+        font-size: 4.4px;
+    }
 }
+
 
 html,
 body {
@@ -94,7 +163,7 @@ body {
     display: flex;
     @include adaptiveValue("gap", 50, 20);
     align-items: center;
-        // для иконок карзины в хедере
+    // для иконок карзины в хедере
 
     &__btn {
         background-color: #E27B3A;
@@ -132,11 +201,6 @@ body {
         &:hover {
             background-color: #E27B3A;
             color: $white;
-
-            text,
-            path {
-                fill: $hover;
-            }
         }
 
         &:active {
